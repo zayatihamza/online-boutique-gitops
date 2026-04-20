@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: image-registry.openshift-image-registry.svc:5000/cicd/frontend:latest
+          image: image-registry.openshift-image-registry.svc:5000/cicd/frontend:36cdc9e6ba16e8e25ac36621216b50efe07cbbec
           ports:
             - containerPort: 8080
           env:
