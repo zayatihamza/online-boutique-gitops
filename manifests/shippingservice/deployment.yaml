@@ -28,7 +28,7 @@ spec:
               - ALL
           privileged: false
           readOnlyRootFilesystem: true
-        image: image-registry.openshift-image-registry.svc:5000/cicd/shippingservice:latest
+        image: image-registry.openshift-image-registry.svc:5000/cicd/shippingservice:a61edf2177ed43ca9ec6942b72ef5fe68c438a4f
         ports:
         - containerPort: 50051
         env:
