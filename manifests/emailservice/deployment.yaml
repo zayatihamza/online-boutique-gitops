@@ -29,7 +29,7 @@ spec:
             drop:
               - ALL
           privileged: false
-          readOnlyRootFilesystem: true
+          readOnlyRootFilesystem: false
         image: image-registry.openshift-image-registry.svc:5000/cicd/emailservice:718b464c2f45ebc974bb67cc4f3677201651562e
         ports:
         - containerPort: 8080
