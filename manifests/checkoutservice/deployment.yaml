@@ -28,7 +28,7 @@ spec:
                 - ALL
             privileged: false
             readOnlyRootFilesystem: true
-          image: checkoutservice
+          image: image-registry.openshift-image-registry.svc:5000/cicd/checkoutservice:268f81c3e1ae7c90f54eb2a98be7a72e14280186
           ports:
           - containerPort: 5050
           readinessProbe:
