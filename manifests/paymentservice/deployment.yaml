@@ -45,10 +45,10 @@ spec:
             port: 50051
         resources:
           requests:
-            cpu: 100m
+            cpu: 20m
             memory: 64Mi
           limits:
-            cpu: 200m
+            cpu: 50m
             memory: 128Mi
 ---
 apiVersion: v1
