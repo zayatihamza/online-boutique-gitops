@@ -29,7 +29,7 @@ spec:
               - ALL
           privileged: false
           readOnlyRootFilesystem: true
-        image: paymentservice
+        image: image-registry.openshift-image-registry.svc:5000/cicd/paymentservice:720a8c97eb1ea428276c419d90934b63c60019cb
         ports:
         - containerPort: 50051
         env:
