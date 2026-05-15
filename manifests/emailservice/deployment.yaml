@@ -38,16 +38,15 @@ spec:
         - name: PYTHONUNBUFFERED
           value: "1"
         readinessProbe:
-          initialDelaySeconds: 20
+          initialDelaySeconds: 10
           periodSeconds: 5
-          grpc:
-            port: 8080
+          exec:
+            command: ["/bin/grpc_health_probe", "-addr=:8080"]
         livenessProbe:
-          initialDelaySeconds: 20
+          initialDelaySeconds: 10
           periodSeconds: 10
-          failureThreshold: 5
-          grpc:
-            port: 8080
+          exec:
+            command: ["/bin/grpc_health_probe", "-addr=:8080"]
         resources:
           requests:
             cpu: 50m
