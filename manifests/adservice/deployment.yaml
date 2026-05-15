@@ -29,7 +29,7 @@ spec:
               - ALL
           privileged: false
           readOnlyRootFilesystem: true
-        image: adservice
+        image: image-registry.openshift-image-registry.svc:5000/cicd/adservice:latest
         ports:
         - containerPort: 9555
         env:
