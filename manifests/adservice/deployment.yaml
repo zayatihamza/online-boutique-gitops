@@ -1,3 +1,4 @@
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -29,7 +30,7 @@ spec:
               - ALL
           privileged: false
           readOnlyRootFilesystem: true
-        image: image-registry.openshift-image-registry.svc:5000/cicd/adservice:latest
+        image: adservice
         ports:
         - containerPort: 9555
         env:
@@ -37,11 +38,11 @@ spec:
           value: "9555"
         resources:
           requests:
-            cpu: 50m
-            memory: 90
+            cpu: 200m
+            memory: 180Mi
           limits:
-            cpu: 120m
-            memory: 150Mi
+            cpu: 300m
+            memory: 300Mi
         readinessProbe:
           initialDelaySeconds: 20
           periodSeconds: 15
