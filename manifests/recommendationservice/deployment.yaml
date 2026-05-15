@@ -43,7 +43,7 @@ spec:
               - ALL
           privileged: false
           readOnlyRootFilesystem: true
-        image: image-registry.openshift-image-registry.svc:5000/cicd/recommendationservice:latest
+        image: image-registry.openshift-image-registry.svc:5000/cicd/recommendationservice:ad8e7e4c0c5ddb6bfc4b455fa5133d75b469fefa
         ports:
         - containerPort: 8080
         readinessProbe:
