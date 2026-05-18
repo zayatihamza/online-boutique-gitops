@@ -46,7 +46,7 @@ spec:
             port: 7000
         resources:
           requests:
-            cpu: 50m
+            cpu: 30m
             memory: 64Mi
           limits:
             cpu: 100m
