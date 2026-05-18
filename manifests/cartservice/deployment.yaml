@@ -120,7 +120,7 @@ spec:
             memory: 256Mi
             cpu: 125m
           requests:
-            cpu: 70m
+            cpu: 40m
             memory: 200Mi
       volumes:
       - name: redis-data
