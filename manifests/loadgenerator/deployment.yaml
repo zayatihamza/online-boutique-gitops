@@ -64,7 +64,7 @@ spec:
               - ALL
           privileged: false
           readOnlyRootFilesystem: true
-        image: image-registry.openshift-image-registry.svc:5000/cicd/loadgenerator:latest
+        image: image-registry.openshift-image-registry.svc:5000/cicd/loadgenerator:365da28713e40174b2ac67e6cccdfcc6c1a127fd
         env:
         - name: FRONTEND_ADDR
           value: "frontend:80"
