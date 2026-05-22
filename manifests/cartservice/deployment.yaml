@@ -13,6 +13,8 @@ spec:
       labels:
         app: cartservice
     spec:
+      nodeName: okd-cvxm6-master-2   # nœud cible  
+    spec:
       serviceAccountName: cartservice
       terminationGracePeriodSeconds: 5
       securityContext:
