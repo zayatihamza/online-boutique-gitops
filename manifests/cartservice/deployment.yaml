@@ -39,17 +39,17 @@ spec:
           value: "redis-cart:6379"
         resources:
           requests:
-            cpu: 50m
-            memory: 64Mi
-          limits:
-            cpu: 100m
+            cpu: 80m
             memory: 128Mi
+          limits:
+            cpu: 200m
+            memory: 256Mi
         readinessProbe:
-          initialDelaySeconds: 15
+          initialDelaySeconds: 45
           grpc:
             port: 7070
         livenessProbe:
-          initialDelaySeconds: 15
+          initialDelaySeconds: 30
           periodSeconds: 10
           grpc:
             port: 7070
