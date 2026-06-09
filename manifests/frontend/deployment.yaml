@@ -28,6 +28,7 @@ spec:
       containers:
         - name: frontend
           image: image-registry.openshift-image-registry.svc:5000/cicd/frontend:a56c9704c18b82c3cc98069f1518aa667afab72b
+          command: ["/bin/sh", "-c", "source /vault/secrets/frontend.env && /frontend"]
           ports:
             - containerPort: 8080
           env:
