@@ -28,7 +28,6 @@ spec:
       containers:
         - name: frontend
           image: image-registry.openshift-image-registry.svc:5000/cicd/frontend:a56c9704c18b82c3cc98069f1518aa667afab72b
-          command: ["/bin/sh", "-c", "source /vault/secrets/frontend.env && /frontend"]
           ports:
             - containerPort: 8080
           env:
@@ -45,7 +44,8 @@ spec:
               value: "checkoutservice:5050"
             - name: SHIPPING_SERVICE_ADDR
               value: "shippingservice:50051"
-            # AD_SERVICE_ADDR supprimé → injecté depuis OpenBao (secret/dev/frontend)
+            - name: AD_SERVICE_ADDR
+              value: "adservice:9555"
             - name: SHOPPING_ASSISTANT_SERVICE_ADDR
               value: "shoppingassistantservice:8080"
             - name: ENV_PLATFORM
