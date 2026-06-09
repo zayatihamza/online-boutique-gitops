@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
-  namespace: dev  
+  namespace: dev
 spec:
   replicas: 1
   selector:
@@ -12,7 +12,19 @@ spec:
     metadata:
       labels:
         app: frontend
+      annotations:
+        # OpenBao Sidecar Injector
+        vault.hashicorp.com/agent-inject: "true"
+        vault.hashicorp.com/role: "dev-role"
+        vault.hashicorp.com/address: "http://openbao.openbao.svc:8200"
+        vault.hashicorp.com/agent-inject-secret-frontend.env: "secret/data/dev/frontend"
+        vault.hashicorp.com/agent-inject-template-frontend.env: |
+          {{- with secret "secret/data/dev/frontend" -}}
+          export CURRENCY_SERVICE_ADDR="{{ .Data.data.CURRENCY_SERVICE_ADDR }}"
+          export AD_SERVICE_ADDR="{{ .Data.data.AD_SERVICE_ADDR }}"
+          {{- end }}
     spec:
+      serviceAccountName: frontend
       containers:
         - name: frontend
           image: image-registry.openshift-image-registry.svc:5000/cicd/frontend:a56c9704c18b82c3cc98069f1518aa667afab72b
@@ -23,8 +35,7 @@ spec:
               value: "8080"
             - name: PRODUCT_CATALOG_SERVICE_ADDR
               value: "productcatalogservice:3550"
-            - name: CURRENCY_SERVICE_ADDR
-              value: "currencyservice:7000"
+            # CURRENCY_SERVICE_ADDR supprimé → injecté depuis OpenBao (secret/dev/frontend)
             - name: CART_SERVICE_ADDR
               value: "cartservice:7070"
             - name: RECOMMENDATION_SERVICE_ADDR
@@ -33,8 +44,7 @@ spec:
               value: "checkoutservice:5050"
             - name: SHIPPING_SERVICE_ADDR
               value: "shippingservice:50051"
-            - name: AD_SERVICE_ADDR
-              value: "adservice:9555"
+            # AD_SERVICE_ADDR supprimé → injecté depuis OpenBao (secret/dev/frontend)
             - name: SHOPPING_ASSISTANT_SERVICE_ADDR
               value: "shoppingassistantservice:8080"
             - name: ENV_PLATFORM
@@ -45,8 +55,6 @@ spec:
               value: "jaeger.observability:4317"
             - name: OTEL_SERVICE_NAME
               value: "frontend"
-            - name: PORT
-              value: "8080"
           resources:
             requests:
               cpu: 30m
