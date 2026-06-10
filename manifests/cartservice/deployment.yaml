@@ -31,7 +31,7 @@ spec:
               - ALL
           privileged: false
           readOnlyRootFilesystem: true
-        image: image-registry.openshift-image-registry.svc:5000/cicd/cartservice:latest
+        image: image-registry.openshift-image-registry.svc:5000/cicd/cartservice:0f3212d3decc880e1f3de502c664a942b86f0882
         ports:
         - containerPort: 7070
         env:
