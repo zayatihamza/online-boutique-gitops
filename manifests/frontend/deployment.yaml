@@ -110,7 +110,7 @@ spec:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: 30   # 70% of 100m = 70m actual usage triggers scale-up
+          averageUtilization: 20   # 70% of 100m = 70m actual usage triggers scale-up
   behavior:
     scaleUp:
       stabilizationWindowSeconds: 0       # react immediately under load
