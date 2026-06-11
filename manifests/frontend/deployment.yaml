@@ -90,3 +90,42 @@ spec:
     targetPort: 8080
   tls:
     termination: edge
+
+
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: frontend-hpa
+  namespace: dev
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: frontend
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70   # 70% of 100m = 70m actual usage triggers scale-up
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 0       # react immediately under load
+      policies:
+        - type: Pods
+          value: 2
+          periodSeconds: 30               # add up to 2 pods every 30s
+    scaleDown:
+      stabilizationWindowSeconds: 180     # wait 3 min before scaling down
+      policies:
+        - type: Pods
+          value: 1
+          periodSeconds: 60               # remove 1 pod per minute
+
+
+
+
+
