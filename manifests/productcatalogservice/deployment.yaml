@@ -30,7 +30,7 @@ spec:
               - ALL
           privileged: false
           readOnlyRootFilesystem: true
-        image: image-registry.openshift-image-registry.svc:5000/cicd/productcatalogservice:553dc12c1da873a95cb33160f229118b8333ea10
+        image: image-registry.openshift-image-registry.svc:5000/cicd/productcatalogservice:d543918e8a3384662064a2d0eb0da4ff299efd5e
         ports:
         - containerPort: 3550
         env:
