@@ -27,7 +27,7 @@ spec:
               - ALL
           privileged: false
           readOnlyRootFilesystem: false
-        image: image-registry.openshift-image-registry.svc:5000/cicd/recommendationservice:ad8e7e4c0c5ddb6bfc4b455fa5133d75b469fefa
+        image: image-registry.openshift-image-registry.svc:5000/cicd/recommendationservice:8bc1c4e2ffaa97d605c6b511accfc7991f40f347
         ports:
         - containerPort: 8080
         env:
