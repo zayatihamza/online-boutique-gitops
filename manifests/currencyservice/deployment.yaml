@@ -29,7 +29,7 @@ spec:
               - ALL
           privileged: false
           readOnlyRootFilesystem: true
-        image: image-registry.openshift-image-registry.svc:5000/cicd/currencyservice:9c94e9ee3a30a0172cfac41fe06b6ebb1708b5d3
+        image: image-registry.openshift-image-registry.svc:5000/cicd/currencyservice:d543918e8a3384662064a2d0eb0da4ff299efd5e
         ports:
         - name: grpc
           containerPort: 7000
