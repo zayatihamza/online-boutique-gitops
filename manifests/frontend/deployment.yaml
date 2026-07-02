@@ -36,7 +36,7 @@ spec:
             - name: PRODUCT_CATALOG_SERVICE_ADDR
               value: "productcatalogservice:3550"
             - name: CURRENCY_SERVICE_ADDR
-              value: "currencyservice:7000"   
+              value: "currencyservice:7000"
             - name: CART_SERVICE_ADDR
               value: "cartservice:7070"
             - name: RECOMMENDATION_SERVICE_ADDR
@@ -90,8 +90,7 @@ spec:
     targetPort: 8080
   tls:
     termination: edge
-
-
+---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
@@ -110,22 +109,17 @@ spec:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: 20   # 70% of 100m = 70m actual usage triggers scale-up
+          averageUtilization: 20
   behavior:
     scaleUp:
-      stabilizationWindowSeconds: 0       # react immediately under load
+      stabilizationWindowSeconds: 0
       policies:
         - type: Pods
           value: 2
-          periodSeconds: 30               # add up to 2 pods every 30s
+          periodSeconds: 30
     scaleDown:
-      stabilizationWindowSeconds: 180     # wait 3 min before scaling down
+      stabilizationWindowSeconds: 180
       policies:
         - type: Pods
           value: 1
-          periodSeconds: 60               # remove 1 pod per minute
-
-
-
-
-
+          periodSeconds: 60
