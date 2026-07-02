@@ -13,15 +13,11 @@ spec:
       labels:
         app: cartservice
     spec:
-      nodeName: okd-cvxm6-master-2   # nœud cible  
-    spec:
+      nodeName: okd-cvxm6-master-1
       serviceAccountName: cartservice
       terminationGracePeriodSeconds: 5
       securityContext:
-        fsGroup: 1000
-        runAsGroup: 1000
         runAsNonRoot: true
-        runAsUser: 1000
       containers:
       - name: server
         securityContext:
@@ -90,10 +86,7 @@ spec:
         app: redis-cart
     spec:
       securityContext:
-        fsGroup: 1000
-        runAsGroup: 1000
         runAsNonRoot: true
-        runAsUser: 1000
       containers:
       - name: redis
         securityContext:
