@@ -27,7 +27,7 @@ spec:
       serviceAccountName: frontend
       containers:
         - name: frontend
-          image: image-registry.openshift-image-registry.svc:5000/cicd/frontend:125ce525c713f999055e3c6a2e5eb9928c1d906f
+          image: image-registry.openshift-image-registry.svc:5000/cicd/frontend:695ac4bdaa20c6d8109e24c74537e045a0e029aa
           ports:
             - containerPort: 8080
           env:
